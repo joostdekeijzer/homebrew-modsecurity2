@@ -1,8 +1,8 @@
 class ModsecurityAT2 < Formula
   desc "Modsecurity v2"
   homepage "https://github.com/owasp-modsecurity/ModSecurity"
-  url "https://github.com/owasp-modsecurity/ModSecurity/releases/download/v2.9.13/modsecurity-v2.9.13.tar.gz"
-  sha256 "7fa925289a2e0cb5415ba82626cf0495607a4ab09f78831ace5bbd8d81496cc2"
+  url "https://github.com/owasp-modsecurity/ModSecurity/releases/download/v2.9.15/modsecurity-v2.9.15.tar.gz"
+  sha256 "4fae2d684672a24541607cb0b563d88b88eb4543b88cd090345149bb47309477"
   license "Apache-2.0"
 
   depends_on "autoconf" => :build
@@ -20,7 +20,7 @@ class ModsecurityAT2 < Formula
   def install
     system "autoreconf", "--force", "--install", "--verbose"
 
-    libxml2 = OS.mac? ? "#{MacOS.sdk_path_if_needed}/usr" : Formula["libxml2"].opt_prefix
+    libxml2 = OS.mac? ? "#{MacOS.sdk_path}/usr" : Formula["libxml2"].opt_prefix
 
     args = [
       "--disable-silent-rules",
@@ -75,7 +75,7 @@ diff -ru a/apache2/Makefile.am b/apache2/Makefile.am
 -	  cp -p $(DESTDIR)$(pkglibdir)/$$base.so $(DESTDIR)$(APXS_MODULES); \
  	done
  endif
-diff -ru modsecurity-v2.9.13 a/apache2/Makefile.in modsecurity-v2.9.13 b/apache2/Makefile.in
+diff -ru modsecurity-v2.9.15 a/apache2/Makefile.in modsecurity-v2.9.15 b/apache2/Makefile.in
 --- a/apache2/Makefile.in	2026-04-28 20:03:03
 +++ b/apache2/Makefile.in	2026-05-13 09:18:35
 @@ -1323,14 +1323,12 @@
