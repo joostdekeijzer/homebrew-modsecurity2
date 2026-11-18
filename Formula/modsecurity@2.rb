@@ -48,7 +48,7 @@ class ModsecurityAT2 < Formula
     (testpath/"httpd.conf").write <<~C
         LoadModule mpm_prefork_module lib/httpd/modules/mod_mpm_prefork.so
         ErrorLog #{testpath}/error_log
-        LoadModule security2_module /opt/homebrew/opt/modsecurity@2/lib/mod_security2.so
+        LoadModule security2_module #{opt_lib}/mod_security2.so
         SecAuditEngine RelevantOnly
     C
 
