@@ -11,6 +11,7 @@ class ModsecurityAT2 < Formula
   depends_on "pkgconf" => :build
   depends_on "pcre2"
   depends_on "httpd"
+  depends_on "yajl" # JSON audit log (SecAuditLogFormat JSON)
 
   uses_from_macos "curl", since: :monterey
   uses_from_macos "libxml2"
@@ -26,6 +27,7 @@ class ModsecurityAT2 < Formula
       "--disable-silent-rules",
       "--with-libxml=#{libxml2}",
       "--with-pcre2=#{Formula["pcre2"].opt_prefix}",
+      "--with-yajl=#{Formula["yajl"].opt_prefix}",
       "--with-apxs=#{HOMEBREW_PREFIX}/bin/apxs",
       "--with-apr=#{HOMEBREW_PREFIX}/opt/apr/bin/apr-1-config",
       "--with-apu=#{HOMEBREW_PREFIX}/opt/apr-util/bin/apu-1-config",
@@ -50,6 +52,7 @@ class ModsecurityAT2 < Formula
         ErrorLog #{testpath}/error_log
         LoadModule security2_module #{opt_lib}/mod_security2.so
         SecAuditEngine RelevantOnly
+        SecAuditLogFormat JSON
     C
 
     system "#{HOMEBREW_PREFIX}/bin/httpd", "-t", "-f", "#{testpath}/httpd.conf"
