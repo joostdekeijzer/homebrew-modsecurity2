@@ -4,6 +4,7 @@ class ModsecurityAT2 < Formula
   url "https://github.com/owasp-modsecurity/ModSecurity/releases/download/v2.9.15/modsecurity-v2.9.15.tar.gz"
   sha256 "4fae2d684672a24541607cb0b563d88b88eb4543b88cd090345149bb47309477"
   license "Apache-2.0"
+  revision 1
 
   depends_on "autoconf" => :build
   depends_on "automake" => :build
